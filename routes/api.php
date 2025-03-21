@@ -13,7 +13,7 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('logout', [AuthController::class, 'logout']);
         Route::get('user', [AuthController::class, 'user']);
         Route::post('check', [AuthController::class, 'checkAuth']);
+        Route::apiResource('posts', PostController::class);
     });
 });
 
-Route::apiResource('posts', PostController::class);
