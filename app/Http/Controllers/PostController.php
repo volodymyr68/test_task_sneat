@@ -18,8 +18,8 @@ class PostController extends Controller
         if ($request->has('search')) {
             $query->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($request->search) . '%']);
         }
-
-        $posts = $query->paginate(10);
+        $perPage = $request->input('per_page', 10);
+        $posts = $query->paginate($perPage);
 
         return response()->json($posts);
     }
